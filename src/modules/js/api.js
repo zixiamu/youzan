@@ -4,13 +4,15 @@ let url={
     topList:'/category/topList',
     rank:'/category/rank',
     subList:'/category/subList',
-    searchList:'/search/list'
+    searchList:'/search/list',
+    details:'/goods/details',
+    deal:'/goods/deal'
 }
 
 // 开发环境和真实环境切换
 
 //let host=''
-let host ='http://rap2api.taobao.org/app/mock/7058'
+let host ='https://www.easy-mock.com/mock/5c9c3045d172204b3a07ecb0/youzan'
 
 for (const key in url) {
     if (url.hasOwnProperty(key)) {
