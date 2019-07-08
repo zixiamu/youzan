@@ -14,5 +14,11 @@ class Cart {
       number: 1
     })
   }
+  static remove(arr){
+    let ids=[]
+    arr.forEach(good=>{
+      ids.push(good.id)
+    })
+  }
 }
 export default Cart
