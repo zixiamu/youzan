@@ -91,7 +91,7 @@ new Vue({
   },
   methods: {
     getList() {
-      axios.post(url.cartLists).then(res => {
+      axios.get(url.cartLists).then(res => {
         let lists = res.data.cartList
         lists.forEach(shop => {
           shop.checked = true
