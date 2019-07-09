@@ -26,7 +26,7 @@ export default {
       this.name = ad.name
       this.tel = ad.tel
       this.address = ad.address
-      this.id = id
+      this.id = ad.id
     }
   },
   methods:{
