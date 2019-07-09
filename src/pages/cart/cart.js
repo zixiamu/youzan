@@ -1,4 +1,3 @@
-
 import './cart_base.css'
 import './cart_trade.css'
 import './cart.css'
@@ -7,7 +6,6 @@ import Vue from 'vue'
 import mixin from 'js/mixin.js'
 import axios from 'axios'
 import url from 'js/api.js'
-<<<<<<< HEAD
 import Volecity from 'velocity-animate'
 import Cart from 'js/cartService.js'
 import fetch from 'js/fetch.js'
@@ -28,42 +26,20 @@ new Vue({
       get() {
         if(this.lists&&this.lists.length){
           return this.lists.every(shop => {
-=======
-
-new Vue({
-  el:'.container',
-  data:{
-    lists:null,
-    total:0
-  },
-  computed:{
-    allSelected:{
-      get(){
-        if(this.lists&&this.lists.length){
-          return this.lists.every(shop=>{
->>>>>>> cf93c8330b0e6e7bb6aef5f57e1e2cc4788cfe10
             return shop.checked
           })
         }
         return false
       },
-<<<<<<< HEAD
       set(newVal) {
         this.lists.forEach(shop => {
           shop.checked = newVal
           shop.goodsList.forEach(good => {
-=======
-      set(newVal){
-        this.lists.forEach(shop=>{
-          shop.checked = newVal
-          shop.goodsList.forEach(good =>{
->>>>>>> cf93c8330b0e6e7bb6aef5f57e1e2cc4788cfe10
             good.checked = newVal
           })
         })
       }
     },
-<<<<<<< HEAD
     allRemoveSelected: {
       get() {
         if(this.editingShop) {
@@ -87,15 +63,6 @@ new Vue({
         this.lists.forEach(shop => {
           shop.goodsList.forEach(good => {
             if(good.checked) {
-=======
-    selectLists(){
-      if(this.lists&&this.lists.length){
-        let arr = []
-        let total = 0
-        this.lists.forEach(shop=> {
-          shop.goodsList.forEach(good => {
-            if (good.checked) {
->>>>>>> cf93c8330b0e6e7bb6aef5f57e1e2cc4788cfe10
               arr.push(good)
               total += good.price * good.number
             }
@@ -103,7 +70,6 @@ new Vue({
         })
         this.total = total
         return arr
-<<<<<<< HEAD
       }
       return []
     },
@@ -118,20 +84,14 @@ new Vue({
         return arr
       }
       return []
-=======
-      }else{
-        return []
-      }
->>>>>>> cf93c8330b0e6e7bb6aef5f57e1e2cc4788cfe10
     }
   },
   created() {
     this.getList()
   },
-<<<<<<< HEAD
   methods: {
     getList() {
-      axios.get(url.cartLists).then(res => {
+      axios.post(url.cartLists).then(res => {
         let lists = res.data.cartList
         lists.forEach(shop => {
           shop.checked = true
@@ -141,23 +101,12 @@ new Vue({
           shop.goodsList.forEach(good => {
             good.checked = true
             good.removeChecked = false
-=======
-  methods:{
-    getList(){
-      axios.get(url.cartLists).then(res=>{
-        let lists = res.data.cartList
-        lists.forEach(shop=>{
-          shop.checked =true
-          shop.goodsList.forEach(good=>{
-            good.checked =true
->>>>>>> cf93c8330b0e6e7bb6aef5f57e1e2cc4788cfe10
           })
         })
         this.lists = lists
       })
     },
-<<<<<<< HEAD
-    selectedGood(shop,good) {
+    selectGood(shop,good) {
       let attr = this.editingShop ? 'removeChecked' : 'checked'
       good[attr] = !good[attr]
       shop[attr] = shop.goodsList.every(good => {
@@ -271,6 +220,7 @@ new Vue({
       good.startX = e.changedTouches[0].clientX
     },
     end(e,shopIndex,good,goodIndex) {
+      console.log(e.target)
       let endX = e.changedTouches[0].clientX
       let left = '0'
       if(good.startX - endX > 100) {
@@ -285,23 +235,4 @@ new Vue({
     }
   },
   mixins: [mixin]
-=======
-    selectedGood(shop,good){
-      good.checked=!good.checked
-      shop.checked = shop.goodsList.every(good=>{
-        return good.checked
-      })
-    },
-    selectShop(shop){
-      shop.checked = ! shop.checked
-      shop.goodsList.forEach(good=>{
-        good.checked =shop.checked
-      })
-    },
-    selectAll(){
-      this.allSelected = ! this.allSelected
-    }
-  },
-  mixins:[mixin],
->>>>>>> cf93c8330b0e6e7bb6aef5f57e1e2cc4788cfe10
 })

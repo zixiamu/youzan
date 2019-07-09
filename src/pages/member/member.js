@@ -10,7 +10,7 @@ let routes =[{
   component:require('./components/member.vue' )
 },{
   path:'/address',
-  component:require('./components/address'),
+  component:require('./components/address.vue'),
   children:[{
     path:'',
     // component:require('./components/all')
@@ -18,11 +18,11 @@ let routes =[{
   },{
     path:'all',
     name:'all',
-    component:require('./components/all')
+    component:require('./components/all.vue')
   },{
     path:'form',
     name:'form',
-    component:require('./components/form')
+    component:require('./components/form.vue')
   }]
   }]
 //创建实例
